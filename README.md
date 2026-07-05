@@ -191,6 +191,16 @@ This repository demonstrates practical experience with:
 
 ---
 
+## My Contribution
+This repository represents a collaborative university project completed my team, which consists of three members. While my primary responsibilities were centered on the DevOps and deployment aspects of the project, I also collaborated closely with my teammates during the process of integration and testing, as well of the final troubleshooting and testing to ensure that the application can be run smoothly as a complete system.
+
+My primary contributions included:
+- Designed and implemented a multi-stage Dockerfile for the containerization stage, which provides a consistent environment across development, testing, and deployment.
+- Integrated Docker image generation into the deployment workflow and published container images to Azure Container Registry (ACR).
+- Performed deployment validation by verifying Docker builds, container startup, CI/CD pipeline execution, and application functionality after deployment.
+- Conducted end-to-end testing and troubleshooting of the deployment pipeline to resolve build issues and improve deployment reliability.
+- Collaborated with teammates during the process of application integration, deployment preparation, and system validation to make sure that all the aspects, such as the application itself, database, cloud infrastructure, and deployment pipeline, are compatible and suitable to function.
+
 # Author
 **Devika Rahman**
 
