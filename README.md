@@ -1,4 +1,4 @@
-# 👜 Hayfa Premium Bags
+# Hayfa Premium Bags 
 
 ![Next.js](https://img.shields.io/badge/Next.js-16-black)
 ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=white)
@@ -11,13 +11,13 @@ Hayfa Premium Bags is a full-stack e-commerce web application developed as part 
 
 ---
 
-# 📖 Project Overview
+# Project Overview
 
 Through the Hayfa app, customers are able to browse premium leather bags, while on the  administrator's side, they can handle with product management capabilities. It was designed to demonstrate the complete software development workflow—from database integration and RESTful API implementation to Docker-based deployment and CI/CD automation.
 
 ---
 
-# ✨ Features
+# Features
 
 ## Customer Features
 
