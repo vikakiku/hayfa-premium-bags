@@ -1,220 +1,197 @@
-# Hayfa - Premium Bags E-commerce Platform
-**Group 5 - PSO Finals Project**
+# 👜 Hayfa Premium Bags
 
-A modern e-commerce platform for premium bags featuring product management, shopping cart functionality, and admin dashboard capabilities.
+![Next.js](https://img.shields.io/badge/Next.js-16-black)
+![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=white)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1?logo=postgresql&logoColor=white)
+![Docker](https://img.shields.io/badge/Docker-2496ED?logo=docker&logoColor=white)
+![GitHub Actions](https://img.shields.io/badge/GitHub%20Actions-CI%2FCD-2088FF?logo=githubactions&logoColor=white)
+![Microsoft Azure](https://img.shields.io/badge/Microsoft%20Azure-0078D4?logo=microsoftazure&logoColor=white)
 
-## Technology Stack
+Hayfa Premium Bags is a full-stack e-commerce web application developed as part of a Software Project Organization course. The project demonstrates the implementation of modern web development practices by integrating frontend development, backend services, relational databases, containerization, and deployment automation into a single application.
 
-- **Next.js 16** - React framework with TypeScript
-- **TailwindCSS** - For styling and responsive design
-- **PostgreSQL** - Primary database with pg driver
-- **PHP Alternative** - Alternative backend with MySQL support
-- **Docker** - Containerization with multi-stage builds
-- **ESLint** - Code quality and linting
+---
 
-## Getting Started
+# 📖 Project Overview
 
-### Prerequisites
+Through the Hayfa app, customers are able to browse premium leather bags, while on the  administrator's side, they can handle with product management capabilities. It was designed to demonstrate the complete software development workflow—from database integration and RESTful API implementation to Docker-based deployment and CI/CD automation.
 
-- **Node.js 20+**
-- **PostgreSQL 12+** or **MySQL 8+** (for PHP backend)
-- **Docker** (optional)
-- **Git**
+---
 
-### 1. Installation
+# ✨ Features
 
-1. **Clone the repository**
-   ```bash
-   git clone <repository-url>
-   cd hayfa-group-5-pso-finals
-   ```
+## Customer Features
 
-2. **Install dependencies**
-   ```bash
-   npm install
-   ```
+- Browse available products
+- View detailed product information
+- Explore products by category
+- Responsive user interface
 
-3. **Environment setup**
-   
-   Copy `.env.example` to `.env.local` and configure:
-   ```env
-   DATABASE_URL="postgresql://username:password@localhost:5432/hayfa_db"
-   NODE_ENV="development"
-   NEXT_TELEMETRY_DISABLED=1
-   ```
+## Product Management
 
-### 2. Database Setup
+- Create new products
+- Update product information
+- Delete products
+- Upload product images
+- Manage inventory data
 
-#### PostgreSQL (Recommended)
-```sql
--- Create database
-CREATE DATABASE hayfa_db;
+## Technical Features
 
--- Create products table
-CREATE TABLE products (
-    id SERIAL PRIMARY KEY,
-    name VARCHAR(255) NOT NULL,
-    price INTEGER NOT NULL,
-    image_filename VARCHAR(255),
-    stock INTEGER DEFAULT 0,
-    description TEXT,
-    category_id INTEGER,
-    is_active BOOLEAN DEFAULT true,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);
+- RESTful API implementation
+- PostgreSQL database integration
+- Docker containerization
+- CI/CD workflow using GitHub Actions
+- Cloud deployment preparation for Microsoft Azure
 
--- Import data from CSV files in db/ folder
+---
+
+# Tech Stack
+
+| Category | Technologies |
+|----------|--------------|
+| Frontend | Next.js, React, TypeScript, Tailwind CSS |
+| Backend | RESTful APIs, Node.js |
+| Database | PostgreSQL |
+| DevOps | Docker, GitHub Actions, Microsoft Azure |
+| Development Tools | Git, Visual Studio Code, DBeaver |
+
+---
+
+# Application Architecture
+
+```text
+                Browser
+                    │
+                    ▼
+          Next.js Web Application
+                    │
+              RESTful APIs
+                    │
+              PostgreSQL
+                    │
+          Docker Container
+                    │
+     GitHub Actions CI/CD Pipeline
+                    │
+         Microsoft Azure Deployment
 ```
 
-#### MySQL (for PHP backend)
-```sql
--- Create database
-CREATE DATABASE hayfa_db;
+---
 
--- Configure db.php with your MySQL credentials
--- Import data from CSV files
+# ⚙ CI/CD Workflow
+
+This project includes an automated CI/CD workflow using GitHub Actions.
+
+The workflow performs:
+
+- Source code validation
+- Application build
+- Docker image creation
+- Deployment preparation
+
+Docker is used to provide a consistent runtime environment across development and deployment.
+
+---
+
+# Project Structure
+
+```text
+.
+├── .github/
+│   └── workflows/
+├── db/
+├── public/
+├── src/
+│   ├── app/
+│   ├── components/
+│   └── lib/
+├── uploads/
+├── Dockerfile
+├── package.json
+└── README.md
 ```
 
-### 3. Running the Application
+---
 
-#### Development Mode (Next.js)
+# The step-by-step
+
+## Prerequisites
+
+- Node.js 20+
+- PostgreSQL
+- Git
+
+## Installation
+
+Clone the repository.
+
+```bash
+git clone https://github.com/vikakiku/hayfa-premium-bags.git
+```
+
+Move into the project directory.
+
+```bash
+cd hayfa-premium-bags
+```
+
+Install dependencies.
+
+```bash
+npm install
+```
+
+Configure the environment variables.
+
+```env
+DATABASE_URL=your_postgresql_connection_string
+```
+
+Start the development server.
+
 ```bash
 npm run dev
 ```
-Access the application at: `http://localhost:3000`
 
-#### Production Mode
-```bash
-npm run build
-npm start
+The application will be available at:
+
 ```
-
-### 4. Docker Deployment
-
-#### Option A: Using PowerShell Script (Windows)
-```powershell
-# Build Docker image (reads DATABASE_URL from .env.local)
-.\docker-build.ps1
-
-# Run container
-docker run -p 3000:3000 -e DATABASE_URL="your-database-url" hayfa-app
+http://localhost:3000
 ```
-
-#### Option B: Manual Docker Commands
-```bash
-# Build with database URL argument
-docker build --build-arg DATABASE_URL="postgresql://username:password@localhost:5432/hayfa_db" -t hayfa-app .
-
-# Run container
-docker run -p 3000:3000 -e DATABASE_URL="postgresql://username:password@localhost:5432/hayfa_db" hayfa-app
-```
-
-### 5. PHP Alternative Backend
-
-If you prefer to use the PHP backend:
-
-1. **Setup web server** (Apache/Nginx + PHP + MySQL)
-2. **Configure database connection** in `db.php`
-3. **Run PHP development server**:
-   ```bash
-   php -S localhost:8000
-   ```
-
-## Available Scripts
-
-| Command | Description |
-|---------|-------------|
-| `npm run dev` | Start development server |
-| `npm run build` | Build for production |
-| `npm start` | Start production server |
-| `npm run lint` | Run ESLint |
-| `npm run docker:build` | Build Docker image |
-| `npm run docker:run` | Run Docker container |
-
-## Features
-
-### Customer Features
-- Browse premium bag collections
-- Detailed product information with images
-- Shopping cart with quantity management
-- Responsive design for all devices
-
-### Admin Features
-- Product management (CRUD operations)
-- Inventory management
-- Image upload capabilities
-- Sales dashboard
-
-### Technical Features
-- Server-side rendering (SSR)
-- RESTful API endpoints
-- File upload functionality
-- Type-safe TypeScript implementation
-- Docker containerization
-- Database connection pooling
-
-## Environment Variables
-
-| Variable | Description | Required |
-|----------|------------|----------|
-| `DATABASE_URL` | PostgreSQL connection string | Yes |
-| `NODE_ENV` | Environment mode | No |
-| `NEXT_TELEMETRY_DISABLED` | Disable Next.js telemetry | No |
-
-## Database Schema
-
-### Products Table
-```sql
-id SERIAL PRIMARY KEY,
-name VARCHAR(255) NOT NULL,
-price INTEGER NOT NULL,
-image_filename VARCHAR(255),
-stock INTEGER DEFAULT 0,
-description TEXT,
-category_id INTEGER,
-is_active BOOLEAN DEFAULT true,
-created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-```
-
-### Data Import
-Product data is available in CSV format in the `db/` folder:
-- `products.csv` - Complete product data
-- `categories.csv` - Product categories
-- `cart_items.csv` - Cart items data
-
-## Deployment
-
-### Production Docker
-```bash
-# Build production image
-docker build -t hayfa-app:latest .
-
-# Run with production environment
-docker run -p 3000:3000 \
-  -e DATABASE_URL="your-production-database-url" \
-  -e NODE_ENV="production" \
-  hayfa-app:latest
-```
-
-### Cloud Platforms
-- **Vercel**: Connect GitHub repo and set environment variables
-- **Railway**: Deploy with DATABASE_URL configuration
-- **DigitalOcean**: Use App Platform with Node.js environment
-- **Heroku**: Deploy with PostgreSQL add-on
-
-## Contributing
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
-
-## License
-
-This project is for educational purposes - PSO Finals Project.
 
 ---
-**© 2024 Hayfa - Group 5 PSO Finals**
+
+# Docker
+
+Build the Docker image.
+
+```bash
+docker build -t hayfa-app .
+```
+
+Run the container.
+
+```bash
+docker run -p 3000:3000 \
+-e DATABASE_URL=your_database_url \
+hayfa-app
+```
+
+---
+
+# Repository Highlights
+
+This repository demonstrates practical experience with:
+
+- Full-stack web application development
+- RESTful API development
+- Relational database integration
+- Docker containerization
+- CI/CD automation using GitHub Actions
+- Git-based collaborative development workflow
+
+---
+
+# Author
+**Devika Rahman**
+
+GitHub: https://github.com/vikakiku
